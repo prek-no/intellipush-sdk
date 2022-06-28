@@ -1,14 +1,14 @@
 {
-  "extends": "./tsconfig.json",
+  "extends": "../tsconfig.json",
   "compilerOptions": {
     "module": "CommonJS",
-    "outDir": "dist/cjs",
-    "declarationDir": "dist/types"
+    "outDir": "../dist/cjs",
+    "declarationDir": "../dist/types"
   },
   "files": [
-    "index.ts"
+    "../index.ts"
   ],
   "include": [
-    "src/**/*"
+    "../src/**/*"
   ]
 }
