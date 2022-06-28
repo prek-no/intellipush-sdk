@@ -24,7 +24,7 @@
     "lint": "eslint ./src",
     "clean": "rimraf dist/*",
     "build": "yarn clean && tsc --project config/tsconfig.esm.json & tsc --project config/tsconfig.cjs.json",
-    "release": "yarn build && npm run release-it"
+    "release": "yarn build && release-it"
   },
   "exports": {
     "import": "./dist/esm/index.js",
