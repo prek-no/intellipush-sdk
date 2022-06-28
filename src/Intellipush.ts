@@ -1,11 +1,13 @@
 import 'isomorphic-unfetch'
-import {ISMSModule, IUserModule, SMS, User} from "./Modules";
+import {Contact, IContactModule, ISMSModule, IUserModule, SMS, User} from "./Modules";
 import {serializeQuery} from "./utils";
-import {ClientConfig, ISMSCreateRequest, ISMSResponse, IUserResponse, RequestOptions} from "./types";
+import {ClientConfig, RequestOptions} from "./types";
 
-export interface IIntellipush extends IUserModule, ISMSModule {
+export interface IIntellipush {
+    Contact: IContactModule
+    SMS: ISMSModule
+    User: IUserModule
     authenticate(): Promise<Response>
-
     request(endpoint: string, options: Record<string, any>): Promise<Response>
 }
 
@@ -14,10 +16,19 @@ export default class Intellipush implements IIntellipush {
     private config: ClientConfig
     private accessToken: string
 
+    // Modules
+    Contact: IContactModule;
+    User: IUserModule;
+    SMS: ISMSModule;
+
     constructor(config: ClientConfig) {
         this.config = config
 
-        Object.assign(this, User, SMS)
+        Object.assign(this, {
+            Contact,
+            SMS,
+            User
+        })
     }
 
     /**
@@ -76,25 +87,5 @@ export default class Intellipush implements IIntellipush {
         })
 
         return response.json()
-    }
-
-    me(): Promise<IUserResponse> {
-        throw new Error('Method not implemented.');
-    }
-
-    create(params: ISMSCreateRequest): Promise<ISMSResponse> {
-        throw new Error('Method not implemented.');
-    }
-
-    createBatch(params: ISMSCreateRequest): Promise<ISMSResponse> {
-        throw new Error('Method not implemented.');
-    }
-
-    get(id: string): Promise<ISMSResponse> {
-        throw new Error('Method not implemented.');
-    }
-
-    status(ids: number[] | string[]): Promise<ISMSResponse> {
-        throw new Error('Method not implemented.');
     }
 }

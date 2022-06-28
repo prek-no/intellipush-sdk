@@ -15,6 +15,11 @@ export const ContactCreateSchema = Joi.object({
     param3: Joi.string()
 });
 
+export const ContactUpdateSchema = Joi.object({
+    id: Joi.string().required(),
+    ...ContactCreateSchema
+});
+
 /** SMS **/
 export const SMSCreateSchema = Joi.object({
     message: Joi.string().max(160),

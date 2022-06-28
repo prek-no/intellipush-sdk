@@ -27,17 +27,17 @@ yarn add @hirvi/intellipush-sdk
 import { Intellipush } from '@hirvi/intellipush-sdk';
 
 // Initialize client
-const intellipush = new Intellipush({
+const Client = new Intellipush({
     clientId: process.env.INTELLIPUSH_CLIENT_ID,
     clientSecret: process.env.INTELLIPUSH_CLIENT_SECRET,
 })
 
 // OAuth2 authentication
-await intellipush.authenticate()
+await Client.authenticate()
 
 // Create SMS and send
 try {
-    const result = await intellipush.create({
+    const result = await Client.SMS.create({
         message: 'Intellipush rocks!',
         countrycode: '0047',
         phonenumber: '1234567890'
@@ -49,6 +49,6 @@ try {
 }
 ```
 
-Need help? Feel free to [contact us](https://www.intellipush.com).
+Need help? Feel free to [contact us](https://www.hirvi.no).
 
 [![MIT](https://img.shields.io/badge/License-MIT-teal.svg)](LICENSE)

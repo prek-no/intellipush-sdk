@@ -1,3 +1,5 @@
+export { default as Contact } from './Contact'
+export type { IContactModule } from './Contact'
 export { default as SMS } from './SMS'
 export type { ISMSModule } from './SMS'
 export { default as User } from './User'
