@@ -2,7 +2,7 @@
 
 # Unofficial Nodejs SDK for [Intellipush](https://www.intellipush.com)
 
-[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE.md)
+This SDK is actively developed and maintained by [HIRVI](https://hirvi.no) - an official [Intellipush partner](https://www.intellipush.com/partnere/).
 
 ## Installation
 
@@ -48,3 +48,7 @@ try {
     return console.log(err)
 }
 ```
+
+Need help? Feel free to [contact us](https://www.intellipush.com).
+
+[![MIT](https://img.shields.io/badge/License-MIT-teal.svg)](LICENSE)
