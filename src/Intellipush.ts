@@ -1,11 +1,27 @@
 import 'isomorphic-unfetch'
-import {Contact, IContactModule, ISMSModule, IUserModule, SMS, User} from "./Modules";
+import {
+    Contact,
+    ContactList,
+    IContactListModule,
+    IContactModule,
+    ISMSModule,
+    ITwoFactorModule,
+    IUrlModule,
+    IUserModule,
+    SMS,
+    TwoFactor,
+    Url,
+    User
+} from "./Modules";
 import {serializeQuery} from "./utils";
 import {ClientConfig, RequestOptions} from "./types";
 
 export interface IIntellipush {
     Contact: IContactModule
+    ContactList: IContactListModule
     SMS: ISMSModule
+    TwoFactor: ITwoFactorModule
+    Url: IUrlModule
     User: IUserModule
     authenticate(): Promise<Response>
     request(endpoint: string, options: Record<string, any>): Promise<Response>
@@ -18,15 +34,21 @@ export default class Intellipush implements IIntellipush {
 
     // Modules
     Contact: IContactModule;
-    User: IUserModule;
+    ContactList: IContactListModule;
     SMS: ISMSModule;
+    TwoFactor: ITwoFactorModule
+    Url: IUrlModule;
+    User: IUserModule;
 
     constructor(config: ClientConfig) {
         this.config = config
 
         Object.assign(this, {
             Contact,
+            ContactList,
             SMS,
+            TwoFactor,
+            Url,
             User
         })
     }

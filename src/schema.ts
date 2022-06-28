@@ -20,6 +20,45 @@ export const ContactUpdateSchema = Joi.object({
     ...ContactCreateSchema
 });
 
+/** Contact List **/
+export const ContactListCreateSchema = Joi.object({
+    name: Joi.string().required()
+});
+
+export const ContactListUpdateSchema = Joi.object({
+    id: Joi.string().required(),
+    ...ContactListCreateSchema
+});
+
+/** Url shortener **/
+export const UrlGenerateSchema = Joi.string().uri().required()
+export const UrlDetailsSchema = Joi.number().required()
+
+export const UrlGenerateChildSchema = Joi.object({
+    id: Joi.string().required(),
+    target: Joi.object({
+        contact_id: Joi.number().required(),
+        email: Joi.string().email().required(),
+        countrycode: Joi.string().required(),
+        phonenumber: Joi.string().required()
+    })
+});
+
+/** Two Factor **/
+export const Url2FAGenerateSchema = Joi.object({
+    countrycode: Joi.string().required(),
+    phonenumber: Joi.string().required(),
+    message_p1: Joi.string().required(),
+    message_p2: Joi.string().required()
+});
+
+export const Url2FAValidateSchema = Joi.object({
+    countrycode: Joi.string().required(),
+    phonenumber: Joi.string().required(),
+    code: Joi.string().required()
+});
+
+
 /** SMS **/
 export const SMSCreateSchema = Joi.object({
     message: Joi.string().max(160),

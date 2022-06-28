@@ -13,6 +13,7 @@ export interface ClientConfig {
 export interface APIResponseFormat {
     success: boolean
     data: Record<string, any>
+    errorcode?: number
     status_message: string
 }
 
@@ -65,6 +66,35 @@ export interface IContactsResponse extends APIResponseFormat {
     data: Pick<IContactResponse, 'data'>[]
 }
 
+// Contact List
+export interface IContactListCreateRequest {
+    name: string
+}
+
+export interface IContactListsGetParams extends IContactsGetParams {
+    id?: string
+}
+
+export interface IContactListUpdateRequest extends IContactListCreateRequest {
+    id: string
+}
+
+export interface IContactListResponse extends APIResponseFormat {
+    data: {
+        id: string
+        contactlist_name?: string
+        list_name: string
+        read_only?: string
+        contacts?: string
+    }
+}
+
+export interface IContactListsResponse extends APIResponseFormat {
+    data: Pick<IContactListResponse, 'data'>[]
+}
+
+export interface IContactsInListResponse extends IContactsResponse {}
+
 // SMS
 export interface ISMSCreateRequest {
     message: string
@@ -99,6 +129,82 @@ export interface ISMSResponse extends APIResponseFormat {
         credits_amount: number
         timetosend: string
         epochtimetosend: number
+    }
+}
+
+// Two Factor
+export interface ITwoFactorGenerateResponse extends APIResponseFormat {
+    data: {
+        id: string
+        timetosend: string
+        priority: string
+        internal_id: string
+        external_id: string
+        in_progress: string
+        text_message: string
+        method: string
+        single_target_countrycode: string
+        single_target: string
+        use_sendername: string
+    }
+}
+
+export interface ITwoFactorValidateResponse extends APIResponseFormat {
+    data: {
+        access: boolean
+    }
+}
+
+export interface ITwoFactorGenerateRequest {
+    countrycode: string
+    phonenumber: string
+    message_p1: string
+    message_p2: string
+}
+
+export interface ITwoFactorValidateRequest {
+    countrycode: string
+    phonenumber: string
+    code: string
+}
+
+// Url
+export interface IUrlResponse extends APIResponseFormat {
+    data: {
+        id: string
+        long_url: string
+        short_url: string
+        created: string
+    }
+}
+
+export interface IUrlDetailsResponse extends APIResponseFormat {
+    data: {
+        id: string
+        long_url: string
+        short_url: string
+        created: string
+        parent_url_id: string
+        visited: string
+        visits: string
+        unique_visits: string
+        child_urls: string
+        last_visited_time: string
+        target_countrycode: string
+        target_phonenumber: string
+        target_email: string
+        target_contact_id: string
+        sendt: string
+    }
+}
+
+export interface IUrlChildRequest {
+    id: string
+    target: {
+        contact_id: number
+        email: string
+        countrycode: string
+        phonenumber: string
     }
 }
 

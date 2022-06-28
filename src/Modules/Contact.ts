@@ -12,6 +12,7 @@ export interface IContactModule {
     update (params: Partial<IContactUpdateRequest>): Promise<IContactResponse>
     get (id: string): Promise<IContactResponse>
     getContacts (params: IContactsGetParams): Promise<IContactsResponse>
+    delete (id: string): Promise<IContactResponse>
 }
 
 export default {
@@ -43,5 +44,9 @@ export default {
 
     getContacts (params: IContactsGetParams): Promise<IContactResponse> {
         return this.request(`${this.prefix}/getContacts`, { method: 'get', params  })
+    },
+
+    delete (id: string): Promise<IContactResponse> {
+        return this.request(`${this.prefix}/delete`, { method: 'delete', params: { id } })
     },
 }
