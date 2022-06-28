@@ -25,9 +25,8 @@ export const ContactListCreateSchema = Joi.object({
     name: Joi.string().required()
 });
 
-export const ContactListUpdateSchema = Joi.object({
-    id: Joi.string().required(),
-    ...ContactListCreateSchema
+export const ContactListUpdateSchema = ContactListCreateSchema.keys({
+    id: Joi.string().required()
 });
 
 /** Url shortener **/
