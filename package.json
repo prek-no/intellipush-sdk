@@ -13,6 +13,12 @@
     "type": "git",
     "url": "git+git@github.com:hirvi-no/intellipush-sdk.git"
   },
+  "files": [
+    "dist/*.js",
+    "dist/**/*.js",
+    "dist/*.ts",
+    "dist/**/*.ts"
+  ],
   "scripts": {
     "test": "jest",
     "lint": "eslint ./src",
