@@ -9,6 +9,13 @@
     "url": "https://github.com/hirvi-no/intellipush-sdk/issues"
   },
   "homepage": "https://www.intellipush.com",
+  "keywords": [
+    "intellipush",
+    "hirvi",
+    "sms",
+    "netron",
+    "nodejs"
+  ],
   "repository": {
     "type": "git",
     "url": "git+git@github.com:hirvi-no/intellipush-sdk.git"
