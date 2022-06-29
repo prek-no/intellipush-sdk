@@ -1,3 +1,5 @@
+<div style="margin-top: 40px;"></div>
+
 ![https://www.intellipush.com/](https://www.intellipush.com/wp-content/uploads/2021/03/IP-logo-mobile.png "Intellipush logo")
 
 # Unofficial Nodejs SDK for [Intellipush](https://www.intellipush.com)
@@ -56,7 +58,8 @@ try {
 // Initialize and authenticate first. See above.
 
 try {
-    const result: IContactResponse = await intellipush.contact.create({
+    // Add your data directly in the create method
+    const result1: IContactResponse = await intellipush.contact.create({
         name: "Tim Apple",
         countrycode: "0047",
         phonenumber: "12345678",
@@ -64,8 +67,19 @@ try {
         company: "Apple",
         country: "USA"
     })
+    
+    console.log(result1) // See IContactCreateRequest
+  
+    // Or construct your data using our datamodels;
+    const contact = new ContactModel()
+            .setName('Tim cook')
+            .setCountrycode('0047')
+            .setPhonenumber('95091818')
+            .setEmail('tim@example.com');
 
-    console.log(result) // See IContactCreateRequest
+    const result2: IContactResponse = await intellipush.contact.create(contact)
+
+    console.log(result2) // See IContactCreateRequest
 } catch (err: any) {
     return console.log(err)
 }
