@@ -1,4 +1,6 @@
-import 'isomorphic-unfetch'
+import 'isomorphic-unfetch';
+import { ClientConfig } from './Intellipush.types';
+import IntellipushClient, { IIntellipushClient } from './Intellipush.client';
 import {
     Contact,
     ContactList,
@@ -11,103 +13,64 @@ import {
     SMS,
     TwoFactor,
     Url,
-    User
-} from "./Modules";
-import {serializeQuery} from "./utils";
-import {ClientConfig, RequestOptions} from "./types";
+    User,
+} from './API';
 
 export interface IIntellipush {
-    Contact: IContactModule
-    ContactList: IContactListModule
-    SMS: ISMSModule
-    TwoFactor: ITwoFactorModule
-    Url: IUrlModule
-    User: IUserModule
+    client: IIntellipushClient
+    get contact(): IContactModule
+    get contactList(): IContactListModule
+    get sms(): ISMSModule
+    get twoFactor(): ITwoFactorModule
+    get url(): IUrlModule
+    get user(): IUserModule
     authenticate(): Promise<Response>
-    request(endpoint: string, options: Record<string, any>): Promise<Response>
+    setToken (token: string): void
+    getToken (): string
 }
 
 export default class Intellipush implements IIntellipush {
-    readonly baseApiUrl = 'https://api.intellipush.com'
-    private config: ClientConfig
-    private accessToken: string
+    readonly baseApiUrl = 'https://api.intellipush.com';
 
-    // Modules
-    Contact: IContactModule;
-    ContactList: IContactListModule;
-    SMS: ISMSModule;
-    TwoFactor: ITwoFactorModule
-    Url: IUrlModule;
-    User: IUserModule;
+    readonly client: IIntellipushClient = {} as IIntellipushClient;
 
     constructor(config: ClientConfig) {
-        this.config = config
-
-        Object.assign(this, {
-            Contact,
-            ContactList,
-            SMS,
-            TwoFactor,
-            Url,
-            User
-        })
+        this.client = new IntellipushClient(config);
     }
 
-    /**
-     * Authenticate
-     */
-    async authenticate (): Promise<Response> {
-        let auth = "Basic " + Buffer.from(`${this.config.clientId}:${this.config.clientSecret}`).toString('base64')
-
-        let headers = {
-            "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
-            "Authorization": auth
-        }
-
-        const response = await fetch(`${this.baseApiUrl}/oauth2/token`, {
-            method: 'post',
-            headers,
-            body: 'grant_type=client_credentials'
-        });
-
-        const result = await response.json()
-        this.accessToken = result.access_token
-
-        return result
+    async authenticate(): Promise<Response> {
+        return this.client.authenticate();
     }
 
-    /**
-     * Make API Request
-     *
-     * @param endpoint
-     * @param options
-     */
-    async request(endpoint: string = '', options: RequestOptions = {} as RequestOptions): Promise<Response> {
-        if (!this.accessToken) {
-            throw Error('No access token provided')
-        }
+    get contact(): IContactModule {
+        return new Contact(this.client);
+    }
 
-        const {
-            headers = {},
-            method = 'post',
-            body = null,
-            params = {}
-        } = options
+    get contactList(): IContactListModule {
+        return new ContactList(this.client);
+    }
 
-        let queryString = serializeQuery(params)
-        queryString = queryString ? `?${queryString}` : ''
+    get sms(): ISMSModule {
+        return new SMS(this.client);
+    }
 
-        const response = await fetch(`${this.baseApiUrl}/restv2/${endpoint}${queryString}`, {
-            method,
-            headers: {
-                ...headers,
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                "Authorization": `Bearer ${this.accessToken}`
-            },
-            body: body && JSON.stringify(body)
-        })
+    get twoFactor(): ITwoFactorModule {
+        return new TwoFactor(this.client);
+    }
 
-        return response.json()
+    get url(): IUrlModule {
+        return new Url(this.client);
+    }
+
+    get user(): IUserModule {
+        return new User(this.client);
+    }
+
+    getToken(): string {
+        return this.client.getToken();
+    }
+
+    setToken(token: string) {
+        this.client.setToken(token);
     }
 }

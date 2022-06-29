@@ -21,7 +21,8 @@
   ],
   "scripts": {
     "test": "jest",
-    "lint": "eslint ./src",
+    "lint:js": "eslint --ext \".ts\" --ignore-path .gitignore .",
+    "lint": "yarn lint:js",
     "clean": "rimraf dist/*",
     "build": "yarn clean && tsc --project config/tsconfig.esm.json & tsc --project config/tsconfig.cjs.json",
     "release": "yarn build && release-it"
@@ -37,6 +38,8 @@
   "devDependencies": {
     "@types/node": "^18.0.0",
     "@types/node-fetch": "^2.6.2",
+    "@typescript-eslint/eslint-plugin": "^5.30.0",
+    "@typescript-eslint/parser": "^5.30.0",
     "eslint": "^8.18.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-airbnb-typescript": "^17.0.0",

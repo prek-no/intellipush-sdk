@@ -3,6 +3,16 @@ module.exports = {
     extends: 'airbnb-typescript/base',
     plugins: ['import'],
     parserOptions: {
-        project: './tsconfig.eslint.json',
+        project: './config/tsconfig.eslint.json',
+    },
+    rules: {
+        'no-console': 'off',
+        'no-use-before-define': 'off',
+        '@typescript-eslint/no-use-before-define': ['error'],
+        '@typescript-eslint/indent': ['error', 4],
+        'multiline-ternary': 'off',
+        'node/no-callback-literal': 0,
+        'import/named': 'off',
+        indent: ['error', 4],
     },
 };

@@ -27,7 +27,7 @@ yarn add @hirvi/intellipush-sdk
 import { Intellipush } from '@hirvi/intellipush-sdk';
 
 // Initialize client
-const Client = new Intellipush({
+const intellipush = new Intellipush({
     clientId: process.env.INTELLIPUSH_CLIENT_ID,
     clientSecret: process.env.INTELLIPUSH_CLIENT_SECRET,
 })
@@ -37,7 +37,7 @@ await Client.authenticate()
 
 // Create SMS and send
 try {
-    const result = await Client.SMS.create({
+    const result = await intellipush.sms.create({
         message: 'Intellipush rocks!',
         countrycode: '0047',
         phonenumber: '1234567890'
