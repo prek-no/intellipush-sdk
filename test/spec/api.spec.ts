@@ -10,8 +10,8 @@ jasmine.getEnv().addReporter({
 describe('api client', () => {
     it('contains all methods', () => {
         const client = new Intellipush({
-            clientId: '1200478',
-            clientSecret: '14a06df0c9904fedf78043696d1452e3',
+            clientId: '123456',
+            clientSecret: 'clientsecret123',
         });
 
         expect(client.authenticate).toBeDefined();
