@@ -49,41 +49,6 @@ try {
 }
 ```
 
-## Development status
-
-- [X] Authentication 
-  - [X] authenticate()
-  - [X] getToken()
-  - [X] setToken()
-- [X] API Resources
-  - [X] Contact 
-    - [X] create()
-    - [X] update()
-    - [X] get()
-    - [X] getContacts()
-    - [X] delete()
-  - [X] ContactList
-    - [X] create()
-    - [X] update()
-    - [X] get()
-    - [X] getContactLists()
-    - [X] getContactsInList()
-    - [X] delete()
-  - [X] SMS
-    - [X] create()
-    - [X] createBatch()
-    - [X] get()
-    - [X] status()
-  - [X] TwoFactor
-    - [X] generate()
-    - [X] validate()
-  - [X] Url
-    - [X] generate()
-    - [X] generateChild()
-    - [X] details()
-  - [X] User
-    - [X] me()
-
 ### Contact - [Swagger Doc](https://api.intellipush.com/restv2/developer/#/contact)
 
 **Create contact**
@@ -151,6 +116,43 @@ try {
     return console.log(err)
 }
 ```
+
+## Development status
+
+- [X] Authentication
+  - [X] authenticate
+  - [X] getToken
+  - [X] setToken
+- [X] API Resources
+  - [X] Contact
+    - [X] create
+    - [X] update
+    - [X] get
+    - [X] getContacts
+    - [X] delete
+  - [X] ContactList
+    - [X] create
+    - [X] update
+    - [X] get
+    - [X] getContactLists
+    - [X] getContactsInList
+    - [X] delete
+  - [X] SMS
+    - [X] create
+    - [X] createBatch
+    - [X] get
+    - [X] status
+  - [X] TwoFactor
+    - [X] generate
+    - [X] validate
+  - [X] Url
+    - [X] generate
+    - [X] generateChild
+    - [X] details
+  - [X] User
+    - [X] me
+
+<hr/>
 
 Need help? Feel free to [contact us](https://www.hirvi.no).
 
