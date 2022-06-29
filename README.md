@@ -33,7 +33,7 @@ const intellipush = new Intellipush({
 })
 
 // OAuth2 authentication
-await Client.authenticate()
+await intellipush.authenticate()
 
 // Create SMS and send
 try {
@@ -44,6 +44,109 @@ try {
     })
 
     console.log(result)
+} catch (err: any) {
+    return console.log(err)
+}
+```
+
+## Development status
+
+- [X] Authentication 
+  - [X] authenticate()
+  - [X] getToken()
+  - [X] setToken()
+- [X] API Resources
+  - [X] Contact 
+    - [X] create()
+    - [X] update()
+    - [X] get()
+    - [X] getContacts()
+    - [X] delete()
+  - [X] ContactList
+    - [X] create()
+    - [X] update()
+    - [X] get()
+    - [X] getContactLists()
+    - [X] getContactsInList()
+    - [X] delete()
+  - [X] SMS
+    - [X] create()
+    - [X] createBatch()
+    - [X] get()
+    - [X] status()
+  - [X] TwoFactor
+    - [X] generate()
+    - [X] validate()
+  - [X] Url
+    - [X] generate()
+    - [X] generateChild()
+    - [X] details()
+  - [X] User
+    - [X] me()
+
+### Contact - [Swagger Doc](https://api.intellipush.com/restv2/developer/#/contact)
+
+**Create contact**
+```typescript
+// Initialize and authenticate first. See above.
+
+try {
+    const result: IContactResponse = await intellipush.contact.create({
+        name: "Tim Apple",
+        countrycode: "0047",
+        phonenumber: "12345678",
+        email: "tim@example.com",
+        company: "Apple",
+        country: "USA"
+    })
+
+    console.log(result) // See IContactCreateRequest
+} catch (err: any) {
+    return console.log(err)
+}
+```
+
+**Update contact**
+```typescript
+// Initialize and authenticate first. See above.
+
+try {
+    const result: IContactResponse = await intellipush.contact.update({
+        id: "0123456",
+        name: "Tim Cook"
+    })
+
+    console.log(result) // See IContactResponse
+} catch (err: any) {
+    return console.log(err)
+}
+```
+
+**Get single contact**
+```typescript
+// Initialize and authenticate first. See above.
+
+try {
+    const result: IContactResponse = await intellipush.contact.get('0123456')
+
+    console.log(result) // See IContactResponse
+} catch (err: any) {
+    return console.log(err)
+}
+```
+
+**List or search for contacts**
+```typescript
+// Initialize and authenticate first. See above.
+
+try {
+    const result: IContactResponse = await intellipush.contact.getContacts({
+        items: 10, // Defaults to 20
+        page: 1, // Defaults to 1
+        query: 'Tim'
+    })
+
+    console.log(result) // See IContactsResponse
 } catch (err: any) {
     return console.log(err)
 }

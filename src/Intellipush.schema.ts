@@ -1,6 +1,12 @@
 import * as Joi from 'joi';
 
 /** Contacts **/
+export const IntellipushConfigSchema = Joi.object({
+    clientId: Joi.string().required(),
+    clientSecret: Joi.string().required()
+});
+
+/** Contacts **/
 export const ContactCreateSchema = Joi.object().keys({
     name: Joi.string().required(),
     countrycode: Joi.string().required(),

@@ -13,7 +13,8 @@
     "baseUrl": ".",
     "strict": true,
     "types": [
-      "@types/node"
+      "@types/node",
+      "@types/jasmine"
     ]
   },
   "include": ["src/**/*"],

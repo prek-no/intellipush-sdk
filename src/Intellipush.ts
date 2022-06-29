@@ -15,6 +15,7 @@ import {
     Url,
     User,
 } from './API';
+import { IntellipushConfigSchema } from './Intellipush.schema';
 
 export interface IIntellipush {
     client: IIntellipushClient
@@ -30,11 +31,15 @@ export interface IIntellipush {
 }
 
 export default class Intellipush implements IIntellipush {
-    readonly baseApiUrl = 'https://api.intellipush.com';
-
     readonly client: IIntellipushClient = {} as IIntellipushClient;
 
     constructor(config: ClientConfig) {
+        const { error } = IntellipushConfigSchema.validate(config);
+
+        if (error) {
+            throw new Error(error.message);
+        }
+
         this.client = new IntellipushClient(config);
     }
 

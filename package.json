@@ -20,7 +20,7 @@
     "dist/**/*.ts"
   ],
   "scripts": {
-    "test": "jest",
+    "test": "env TS_NODE_PROJECT=\"./config/tsconfig.cjs.json\" ts-node node_modules/jasmine/bin/jasmine --config=jasmine.json",
     "lint:js": "eslint --ext \".ts\" --ignore-path .gitignore .",
     "lint": "yarn lint:js",
     "clean": "rimraf dist/*",
@@ -36,6 +36,8 @@
     "access": "public"
   },
   "devDependencies": {
+    "@release-it/conventional-changelog": "^5.0.0",
+    "@types/jasmine": "^4.0.3",
     "@types/node": "^18.0.0",
     "@types/node-fetch": "^2.6.2",
     "@typescript-eslint/eslint-plugin": "^5.30.0",
@@ -44,8 +46,10 @@
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-airbnb-typescript": "^17.0.0",
     "eslint-plugin-import": "^2.26.0",
+    "jasmine": "^4.2.1",
     "release-it": "^15.1.1",
     "rimraf": "^3.0.2",
+    "ts-node": "^10.8.1",
     "typescript": "^4.7.4"
   },
   "dependencies": {

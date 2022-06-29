@@ -8,11 +8,9 @@ export interface IIntellipushClient {
 }
 
 export default class IntellipushClient implements IIntellipushClient {
-    private accessToken: string = '';
-
-    private config: ClientConfig;
-
     readonly baseApiUrl = 'https://api.intellipush.com';
+    private config: ClientConfig;
+    private accessToken: string = '';
 
     constructor(config: ClientConfig) {
         this.config = config;

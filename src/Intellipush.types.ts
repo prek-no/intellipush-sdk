@@ -18,22 +18,24 @@ export interface APIResponseFormat {
 }
 
 // Contact
+export type IContactSexType = 'male' | 'female';
+
 export interface IContactCreateRequest {
     name: string
     countrycode: string
     phonenumber: string
     email: string
-    company: string
-    country: string
-    sex: string
-    zipcode: number
-    param1: string
-    param2: string
-    param3: string
+    company?: string
+    country?: string
+    sex?: IContactSexType
+    zipcode?: number
+    param1?: string
+    param2?: string
+    param3?: string
 }
 
 export interface IContactUpdateRequest extends IContactCreateRequest {
-    id: string
+    id?: string
 }
 
 export interface IContactsGetParams {
@@ -198,14 +200,16 @@ export interface IUrlDetailsResponse extends APIResponseFormat {
     }
 }
 
+export interface IUrlChildTarget {
+    contact_id: number
+    email: string
+    countrycode: string
+    phonenumber: string
+}
+
 export interface IUrlChildRequest {
     id: string
-    target: {
-        contact_id: number
-        email: string
-        countrycode: string
-        phonenumber: string
-    }
+    target: IUrlChildTarget
 }
 
 // User
