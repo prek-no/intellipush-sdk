@@ -74,7 +74,7 @@ try {
     const contact = new ContactModel()
             .setName('Tim cook')
             .setCountrycode('0047')
-            .setPhonenumber('95091818')
+            .setPhonenumber('12345678')
             .setEmail('tim@example.com');
 
     const result2: IContactResponse = await intellipush.contact.create(contact)
