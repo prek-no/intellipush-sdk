@@ -3,7 +3,7 @@ import { IContactListCreateRequest } from '../Intellipush.types';
 export default class ContactList implements IContactListCreateRequest {
     name!: string;
 
-    constructor(obj: IContactListCreateRequest) {
+    constructor(obj: IContactListCreateRequest = {} as IContactListCreateRequest) {
         return Object.assign(this, obj);
     }
 

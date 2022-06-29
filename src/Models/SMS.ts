@@ -1,15 +1,15 @@
 import { ISMSCreateRequest } from '../Intellipush.types';
 
 export default class SMS implements ISMSCreateRequest {
-    contactId!: string;
-    contactlistId!: string;
-    countrycode!: string;
-    date!: string;
     message!: string;
+    countrycode!: string;
     phonenumber!: string;
-    time!: string;
+    contactId?: string;
+    contactlistId?: string;
+    date?: string;
+    time?: string;
 
-    constructor(obj: ISMSCreateRequest) {
+    constructor(obj: ISMSCreateRequest = {} as ISMSCreateRequest) {
         return Object.assign(this, obj);
     }
 

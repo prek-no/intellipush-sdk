@@ -2,19 +2,19 @@ import { IContactSexType, IContactUpdateRequest } from '../Intellipush.types';
 
 export default class Contact implements IContactUpdateRequest {
     id?: string;
-    company!: string;
-    country!: string;
-    countrycode!: string;
-    email!: string;
     name!: string;
-    param1!: string;
-    param2!: string;
-    param3!: string;
     phonenumber!: string;
-    sex: IContactSexType = 'male';
-    zipcode: number = 0;
+    countrycode!: string;
+    email?: string;
+    company?: string;
+    country?: string;
+    param1?: string;
+    param2?: string;
+    param3?: string;
+    sex?: IContactSexType = 'male';
+    zipcode?: number = 0;
 
-    constructor(obj: IContactUpdateRequest) {
+    constructor(obj: IContactUpdateRequest = {} as IContactUpdateRequest) {
         return Object.assign(this, obj);
     }
 

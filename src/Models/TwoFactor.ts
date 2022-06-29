@@ -7,8 +7,8 @@ export default class TwoFactor implements ITwoFactorGenerateRequest, ITwoFactorV
     message_p2!: string;
     phonenumber!: string;
 
-    constructor(obj: ITwoFactorGenerateRequest | ITwoFactorValidateRequest) {
-        Object.assign(this, obj);
+    constructor(obj: ITwoFactorGenerateRequest | ITwoFactorValidateRequest = {} as ITwoFactorGenerateRequest | ITwoFactorValidateRequest) {
+        return Object.assign(this, obj);
     }
 
     setCode(code: string) {

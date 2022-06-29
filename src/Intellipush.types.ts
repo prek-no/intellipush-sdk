@@ -24,7 +24,7 @@ export interface IContactCreateRequest {
     name: string
     countrycode: string
     phonenumber: string
-    email: string
+    email?: string
     company?: string
     country?: string
     sex?: IContactSexType

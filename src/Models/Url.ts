@@ -4,8 +4,8 @@ export default class Url implements IUrlChildRequest {
     id!: string;
     target!: IUrlChildTarget;
 
-    constructor(obj: IUrlChildRequest) {
-        Object.assign(this, obj);
+    constructor(obj: IUrlChildRequest = {} as IUrlChildRequest) {
+        return Object.assign(this, obj);
     }
 
     setId(id: string) {
