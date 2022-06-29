@@ -66,10 +66,10 @@ export const Url2FAValidateSchema = Joi.object({
 /** SMS **/
 export const SMSCreateSchema = Joi.object({
     message: Joi.string().max(160),
-    countrycode: Joi.string().default('0047'), // 0047
-    phonenumber: Joi.string().required(), // 95091819
-    date: Joi.string(), //
-    time: Joi.string(), // 21:30
+    countrycode: Joi.string().default('0047'),
+    phonenumber: Joi.string().required(),
+    date: Joi.string(),
+    time: Joi.string(),
 });
 
 export const SMSCreateBatchSchema = Joi.array().items(SMSCreateSchema);
