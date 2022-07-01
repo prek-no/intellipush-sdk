@@ -6,129 +6,129 @@
 
 This SDK is actively developed and maintained by [HIRVI](https://hirvi.no) - an official [Intellipush partner](https://www.intellipush.com/partnere/).
 
+> For compatibility with Node.js versions < 12, please install the [globalThis polyfill](https://github.com/es-shims/globalThis).
+
 ## Installation
 
-For compatibility with Node.js versions < 12, please install the [globalThis polyfill](https://github.com/es-shims/globalThis).
+Add `@hirvi/intellipush-sdk` dependency to your project:
 
-### Via NPM
-
-```bash
+```shell
 npm install @hirvi/intellipush-sdk
 ```
 
-### Via Yarn
+or using `Yarn`
 
-```bash
+```shell
 yarn add @hirvi/intellipush-sdk
 ```
 
-## Example
+### TypeScript
+
+This package delivers it's own typings. If you have any problems with typings, add the package to the `types` array in your `tsconfig.json`:
+
+```json
+{
+  "compilerOptions": {
+    "types": [
+      "@hirvi/intellipush-sdk"
+    ]
+  }
+}
+```
+
+## Initialize client
+
+Initialize the Intellipush Client by passing in the credentials:
 
 ```typescript
 // const globalThis = require('globalthis')(); // uncomment if NodeJS < NodeJS versions < 12
-import { Intellipush } from '@hirvi/intellipush-sdk';
+import { Intellipush } from '@hirvi/intellipush-sdk'
 
-// Initialize client
 const intellipush = new Intellipush({
-    clientId: process.env.INTELLIPUSH_CLIENT_ID,
-    clientSecret: process.env.INTELLIPUSH_CLIENT_SECRET,
+    clientId: '<client_id>', // e.g process.env.INTELLIPUSH_CLIENT_ID
+    clientSecret: '<client_secret>', // e.g process.env.INTELLIPUSH_CLIENT_SECRET
+})
+```
+
+## Authentication
+
+You can sign in using [OAuth2](https://www.oauth.com/oauth2-servers/access-tokens/client-credentials/) (Client Credentials) by calling the `authenticate` method:
+
+```typescript
+// Async
+try {
+    await intellipush.authenticate()
+} catch(err: any) {
+    console.log(err)
+}
+
+// Promise
+intellipush.authenticate().then(() => {
+    console.log('Authenticated!')
+}).catch(() => {
+    console.log('Authentication failed!')
+})
+```
+
+## Models
+
+This SDK provides you with some convenient data models. All models accepts an object in the constructor as well as some setter functions. See example below.
+
+### Initialize model with an object.
+
+```ts
+const contact = new ContactModel({
+    name: 'Tim Cook',
+    countrycode: '0047',
+    phonenumber: '12345678'
 })
 
-// OAuth2 authentication
-await intellipush.authenticate()
+const result: IContactResponse = await intellipush.contact.create(contact)
 
-// Create SMS and send
-try {
-    const result = await intellipush.sms.create({
-        message: 'Intellipush rocks!',
-        countrycode: '0047',
-        phonenumber: '1234567890'
-    })
-
-    console.log(result)
-} catch (err: any) {
-    return console.log(err)
-}
+console.log(result.data.name)
 ```
 
-### Contact - [Swagger Doc](https://api.intellipush.com/restv2/developer/#/contact)
-
-**Create contact**
+### Initialize without object, use setters
 ```typescript
-// Initialize and authenticate first. See above.
+const contact = new ContactModel()
 
-try {
-    // Add your data directly in the create method
-    const result1: IContactResponse = await intellipush.contact.create({
-        name: "Tim Apple",
-        countrycode: "0047",
-        phonenumber: "12345678",
-        email: "tim@example.com",
-        company: "Apple",
-        country: "USA"
-    })
-    
-    console.log(result1) // See IContactCreateRequest
-  
-    // Or construct your data using our datamodels;
-    const contact = new ContactModel()
-            .setName('Tim cook')
-            .setCountrycode('0047')
-            .setPhonenumber('12345678')
-            .setEmail('tim@example.com');
+contact.setName('Tim cook')
+    .setCountrycode('0047')
+    .setPhonenumber('12345678')
+    .setEmail('tim@example.com')
 
-    const result2: IContactResponse = await intellipush.contact.create(contact)
+const result: IContactResponse = await intellipush.contact.create(contact)
 
-    console.log(result2) // See IContactCreateRequest
-} catch (err: any) {
-    return console.log(err)
-}
+console.log(result.data.name)
 ```
 
-**Update contact**
+### Initialize with object and override with setters
 ```typescript
-// Initialize and authenticate first. See above.
+const contact = new ContactModel({
+    name: 'Tim Cook',
+    countrycode: '0047',
+    phonenumber: '12345678'
+})
 
-try {
-    const result: IContactResponse = await intellipush.contact.update({
-        id: "0123456",
-        name: "Tim Cook"
-    })
+contact.setName('Howard Stewart')
 
-    console.log(result) // See IContactResponse
-} catch (err: any) {
-    return console.log(err)
-}
+const result: IContactResponse = await intellipush.contact.create(contact)
+
+console.log(result.data.name)
 ```
 
-**Get single contact**
+### Run without using data model
+
+Since the Data Models is really just an object, you can also pass an object directly to the API methods:
+
 ```typescript
-// Initialize and authenticate first. See above.
+const result: IContactResponse = await intellipush.contact.create({
+    name: 'Tim Cook',
+    countrycode: '0047',
+    phonenumber: '12345678'
+})
 
-try {
-    const result: IContactResponse = await intellipush.contact.get('0123456')
-
-    console.log(result) // See IContactResponse
-} catch (err: any) {
-    return console.log(err)
-}
-```
-
-**List or search for contacts**
-```typescript
-// Initialize and authenticate first. See above.
-
-try {
-    const result: IContactResponse = await intellipush.contact.getContacts({
-        items: 10, // Defaults to 20
-        page: 1, // Defaults to 1
-        query: 'Tim'
-    })
-
-    console.log(result) // See IContactsResponse
-} catch (err: any) {
-    return console.log(err)
-}
+console.log(result.data.name)
 ```
 
 ## Development status
@@ -153,6 +153,7 @@ try {
     - [X] delete
   - [X] SMS
     - [X] create
+    - [X] createScheduled
     - [X] createBatch
     - [X] get
     - [X] status
