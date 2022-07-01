@@ -137,21 +137,17 @@ export interface ISMSResponse extends APIResponseFormat {
 export type StringBoolean = '1' | '0' | 0 | 1;
 
 export interface ISMSStatusObject {
-    [key: string | number]: {
-        id: string
-        sendt: StringBoolean
-        failed: StringBoolean
-        tries: string
-        deleted: StringBoolean
-        timesendt: Date
-    }
+    id: string
+    sendt: StringBoolean
+    failed: StringBoolean
+    tries: string
+    deleted: StringBoolean
+    timesendt: Date
 }
 
 export interface ISMSStatusResponse extends APIResponseFormat {
     data: {
-        [key: string]: {
-
-        }
+        [key: string]: ISMSStatusObject
     }
 }
 

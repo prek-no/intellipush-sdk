@@ -1,5 +1,3 @@
-<div style="margin-top: 40px;"></div>
-
 ![https://www.intellipush.com/](https://www.intellipush.com/wp-content/uploads/2021/03/IP-logo-mobile.png "Intellipush logo")
 
 # Unofficial Nodejs SDK for [Intellipush](https://www.intellipush.com)
