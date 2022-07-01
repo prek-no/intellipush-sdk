@@ -1,6 +1,6 @@
 {
   "name": "@hirvi/intellipush-sdk",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "author": "Chris Magnussen",
   "license": "MIT",
   "main": "./dist/esm/index.js",

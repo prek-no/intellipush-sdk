@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.2](https://github.com/hirvi-no/intellipush-sdk/compare/1.4.1...1.4.2) (2022-07-01)
+
+
+### Bug Fixes
+
+* Fixed import path ([88b6932](https://github.com/hirvi-no/intellipush-sdk/commit/88b693290c8089d832c4fa4995b114376ac7ebbb))
+
 ## [1.4.1](https://github.com/hirvi-no/intellipush-sdk/compare/1.4.0...1.4.1) (2022-07-01)
 
 
