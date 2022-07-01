@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.1](https://github.com/hirvi-no/intellipush-sdk/compare/1.4.0...1.4.1) (2022-07-01)
+
+
+### Bug Fixes
+
+* Typo ([2302018](https://github.com/hirvi-no/intellipush-sdk/commit/23020182ef6e5cdbec00288f4a4d225f6e14cbd1))
+
 # [1.4.0](https://github.com/hirvi-no/intellipush-sdk/compare/1.3.5...1.4.0) (2022-07-01)
 
 
