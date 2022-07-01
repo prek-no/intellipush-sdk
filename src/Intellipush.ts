@@ -1,4 +1,5 @@
 import 'isomorphic-unfetch';
+import dayjs from 'dayjs';
 import { ClientConfig } from './Intellipush.types';
 import IntellipushClient, { IIntellipushClient } from './Intellipush.client';
 import {
@@ -32,6 +33,7 @@ export interface IIntellipush {
 
 export default class Intellipush implements IIntellipush {
     readonly client: IIntellipushClient = {} as IIntellipushClient;
+    static dayjs: typeof dayjs = dayjs;
 
     constructor(config: ClientConfig) {
         const { error } = IntellipushConfigSchema.validate(config);
