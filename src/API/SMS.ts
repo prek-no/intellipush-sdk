@@ -5,7 +5,7 @@ import {
 } from '../Intellipush.types';
 import { SMSCreateBatchSchema, SMSCreateSchema } from '../Intellipush.schema';
 import ApiBase from './Base';
-import { Intellipush } from '../../index';
+import Intellipush from '../Intellipush';
 
 export interface ISMSModule {
     create (params: ISMSCreateRequest): Promise<ISMSResponse>
