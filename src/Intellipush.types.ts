@@ -177,8 +177,8 @@ export interface ITwoFactorValidateResponse extends APIResponseFormat {
 export interface ITwoFactorGenerateRequest {
     countrycode: string
     phonenumber: string
-    message_p1: string
-    message_p2: string
+    message_pre_code: string
+    message_post_code: string
 }
 
 export interface ITwoFactorValidateRequest {

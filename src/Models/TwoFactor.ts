@@ -3,8 +3,8 @@ import { ITwoFactorGenerateRequest, ITwoFactorValidateRequest } from '../Intelli
 export default class TwoFactor implements ITwoFactorGenerateRequest, ITwoFactorValidateRequest {
     code!: string;
     countrycode!: string;
-    message_p1!: string;
-    message_p2!: string;
+    message_pre_code!: string;
+    message_post_code!: string;
     phonenumber!: string;
 
     constructor(obj: ITwoFactorGenerateRequest | ITwoFactorValidateRequest = {} as ITwoFactorGenerateRequest | ITwoFactorValidateRequest) {
@@ -21,13 +21,13 @@ export default class TwoFactor implements ITwoFactorGenerateRequest, ITwoFactorV
         return this;
     }
 
-    setMessageP1(message_p1: string) {
-        this.message_p1 = message_p1;
+    setMessagePreCode(message_p1: string) {
+        this.message_pre_code = message_p1;
         return this;
     }
 
-    setMessageP2(message_p2: string) {
-        this.message_p2 = message_p2;
+    setMessagePostCode(message_p2: string) {
+        this.message_post_code = message_p2;
         return this;
     }
 
