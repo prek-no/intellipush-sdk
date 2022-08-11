@@ -1,5 +1,7 @@
 # Changelog
 
+## [1.4.3](https://github.com/hirvi-no/intellipush-sdk/compare/1.4.2...1.4.3) (2022-08-11)
+
 ## [1.4.2](https://github.com/hirvi-no/intellipush-sdk/compare/1.4.1...1.4.2) (2022-07-01)
 
 
