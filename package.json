@@ -42,7 +42,8 @@
     "default": "./dist/esm/index.js"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   },
   "devDependencies": {
     "@release-it/conventional-changelog": "^5.0.0",
