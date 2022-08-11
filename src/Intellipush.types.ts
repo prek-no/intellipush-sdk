@@ -108,6 +108,10 @@ export interface ISMSCreateRequest {
     contactlistId?: string
 }
 
+export interface ISMSUpdateRequest extends ISMSCreateRequest {
+    id?: string
+}
+
 export interface ISMSCreateBatchRequest {
     batch: ISMSCreateRequest[]
 }
@@ -132,6 +136,19 @@ export interface ISMSResponse extends APIResponseFormat {
         timetosend: string
         epochtimetosend: number
     }
+}
+
+export interface ISMSGetParams {
+    items?: number
+    page?: number
+}
+
+export interface ISMSGetReceivedParams extends ISMSGetParams {
+    keyword?: string
+}
+
+export interface ISMSListResponse extends APIResponseFormat {
+    data: Pick<ISMSResponse, 'data'>[]
 }
 
 export type StringBoolean = '1' | '0' | 0 | 1;

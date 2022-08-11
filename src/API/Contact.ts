@@ -36,7 +36,7 @@ export default class Contact extends ApiBase implements IContactModule {
             throw Error(error.message);
         }
 
-        return this.client.request(`${this.prefix}/update`, { method: 'post', body: params }) as Promise<IContactResponse>;
+        return this.client.request(`${this.prefix}/update`, { method: 'put', body: params }) as Promise<IContactResponse>;
     }
 
     get(id: string): Promise<IContactResponse> {

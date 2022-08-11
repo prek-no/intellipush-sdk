@@ -38,7 +38,7 @@ export default class ContactList extends ApiBase implements IContactListModule {
             throw Error(error.message);
         }
 
-        return this.client.request(`${this.prefix}/update`, { method: 'post', body: params }) as Promise<IContactListResponse>;
+        return this.client.request(`${this.prefix}/update`, { method: 'put', body: params }) as Promise<IContactListResponse>;
     }
 
     get(id: string): Promise<IContactListResponse> {

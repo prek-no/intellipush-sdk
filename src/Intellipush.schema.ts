@@ -52,8 +52,8 @@ export const UrlGenerateChildSchema = Joi.object({
 export const Url2FAGenerateSchema = Joi.object({
     countrycode: Joi.string().required(),
     phonenumber: Joi.string().required(),
-    message_p1: Joi.string().required(),
-    message_p2: Joi.string().required(),
+    message_pre_code: Joi.string().required(),
+    message_post_code: Joi.string().required(),
 });
 
 export const Url2FAValidateSchema = Joi.object({
@@ -70,6 +70,10 @@ export const SMSCreateSchema = Joi.object({
     phonenumber: Joi.string().required(),
     date: Joi.string(),
     time: Joi.string(),
+});
+
+export const SMSUpdatechema = SMSCreateSchema.keys({
+    id: Joi.number().required(),
 });
 
 export const SMSCreateBatchSchema = Joi.array().items(SMSCreateSchema);
