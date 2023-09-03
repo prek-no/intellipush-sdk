@@ -20,7 +20,7 @@ export interface ISMSModule {
     create (params: ISMSCreateRequest): Promise<ISMSResponse>
     createScheduled (dateTime: Date | string, params: ISMSCreateRequest): Promise<ISMSResponse>
     createBatch (params: ISMSCreateBatchRequest): Promise<ISMSResponse>
-    get (id: string): Promise<ISMSResponse>
+    getPlanned (id: string): Promise<ISMSResponse>
     getUnsent (params: ISMSGetParams): Promise<ISMSListResponse>
     getSent (params: ISMSGetParams): Promise<ISMSListResponse>
     getReceived (params: ISMSGetReceivedParams): Promise<ISMSListResponse>
@@ -101,12 +101,12 @@ export default class SMS extends ApiBase implements ISMSModule {
     }
 
     /**
-     * Get an SMS by ID
+     * Getting a notification that is still unsent.
      *
      * @param id
      */
-    get(id: string): Promise<ISMSResponse> {
-        return this.client.request(`${this.prefix}/get`, { method: 'get', params: { id } }) as Promise<ISMSResponse>;
+    getPlanned(id: string): Promise<ISMSResponse> {
+        return this.client.request(`${this.prefix}/getPlanned`, { method: 'get', params: { id } }) as Promise<ISMSResponse>;
     }
 
     /**
