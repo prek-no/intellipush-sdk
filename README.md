@@ -22,7 +22,7 @@ yarn add @hirvi/intellipush-sdk
 
 ### TypeScript
 
-This package delivers it's own typings. If you have any problems with typings, add the package to the `types` array in your `tsconfig.json`:
+This package delivers its own typings. If you have any problems with typings, add the package to the `types` array in your `tsconfig.json`:
 
 ```json
 {
@@ -148,13 +148,19 @@ console.log(result.data.name)
     - [X] get
     - [X] getContactLists
     - [X] getContactsInList
+    - [X] addContact
+    - [X] removeContact
     - [X] delete
   - [X] SMS
     - [X] create
     - [X] createScheduled
     - [X] createBatch
-    - [X] get
+    - [X] getPlanned
+    - [X] getSent
+    - [X] getUnsent
+    - [X] getReceived
     - [X] status
+    - [X] delete
   - [X] TwoFactor
     - [X] generate
     - [X] validate

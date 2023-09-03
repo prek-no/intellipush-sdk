@@ -4,7 +4,7 @@ import {
     IContactListsGetParams,
     IContactListsResponse,
     IContactListUpdateRequest,
-    IContactsInListResponse,
+    IContactsInListResponse, IContactsResponse,
 } from '../Intellipush.types';
 import { ContactListCreateSchema, ContactListUpdateSchema } from '../Intellipush.schema';
 import ApiBase from './Base';
@@ -15,6 +15,8 @@ export interface IContactListModule {
     get (id: string): Promise<IContactListResponse>
     getContactLists (params: IContactListsGetParams): Promise<IContactListsResponse>
     getContactsInList (params: IContactListsGetParams): Promise<IContactsInListResponse>
+    addContact (contactListId: number, contactId: number): Promise<IContactsResponse>
+    removeContact (contactListId: number, contactId: number): Promise<IContactsResponse>
     delete (id: string): Promise<IContactListResponse>
 }
 
@@ -51,6 +53,14 @@ export default class ContactList extends ApiBase implements IContactListModule {
 
     getContactsInList(params: IContactListsGetParams): Promise<IContactsInListResponse> {
         return this.client.request(`${this.prefix}/getContactsInContactlist`, { method: 'get', params }) as Promise<IContactsInListResponse>;
+    }
+
+    addContact(contactListId: number, contactId: number): Promise<IContactsResponse> {
+        return this.client.request(`${this.prefix}/addContact`, { method: 'post', params: { contactListId, contactId } }) as Promise<IContactsResponse>;
+    }
+
+    removeContact(contactListId: number, contactId: number): Promise<IContactsResponse> {
+        return this.client.request(`${this.prefix}/removeContact`, { method: 'post', params: { contactListId, contactId } }) as Promise<IContactsResponse>;
     }
 
     delete(id: string): Promise<IContactListResponse> {
