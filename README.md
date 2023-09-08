@@ -8,16 +8,16 @@ This SDK is actively developed and maintained by [Prek AS](https://prek.no) - an
 
 ## Installation
 
-Add `@hirvi/intellipush-sdk` dependency to your project:
+Add `@prek-no/intellipush-sdk` dependency to your project:
 
 ```shell
-npm install @hirvi/intellipush-sdk
+npm install @prek-no/intellipush-sdk
 ```
 
 or using `Yarn`
 
 ```shell
-yarn add @hirvi/intellipush-sdk
+yarn add @prek-no/intellipush-sdk
 ```
 
 ### TypeScript
@@ -28,7 +28,7 @@ This package delivers its own typings. If you have any problems with typings, ad
 {
   "compilerOptions": {
     "types": [
-      "@hirvi/intellipush-sdk"
+      "@prek-no/intellipush-sdk"
     ]
   }
 }
@@ -40,7 +40,7 @@ Initialize the Intellipush Client by passing in the credentials:
 
 ```typescript
 // const globalThis = require('globalthis')(); // uncomment if NodeJS < NodeJS versions < 12
-import { Intellipush } from '@hirvi/intellipush-sdk'
+import { Intellipush } from '@prek-no/intellipush-sdk'
 
 const intellipush = new Intellipush({
     clientId: '<client_id>', // e.g process.env.INTELLIPUSH_CLIENT_ID

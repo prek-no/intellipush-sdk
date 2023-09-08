@@ -6,11 +6,12 @@
   "main": "./dist/esm/index.js",
   "types": "./dist/types/index.d.ts",
   "bugs": {
-    "url": "https://github.com/hirvi-no/intellipush-sdk/issues"
+    "url": "https://github.com/prek-no/intellipush-sdk/issues"
   },
   "homepage": "https://www.intellipush.com",
   "keywords": [
     "intellipush",
+    "prek",
     "hirvi",
     "sms",
     "netron",
@@ -18,7 +19,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+git@github.com:hirvi-no/intellipush-sdk.git"
+    "url": "git+git@github.com:prek-no/intellipush-sdk.git"
   },
   "files": [
     "dist/*.js",
