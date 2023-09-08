@@ -1,3 +1,5 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { enc } from 'crypto-js';
 import { ClientConfig, RequestOptions } from './Intellipush.types';
 
 export interface IIntellipushClient {
@@ -20,7 +22,9 @@ export default class IntellipushClient implements IIntellipushClient {
      * Authenticate
      */
     async authenticate(): Promise<Response> {
-        let auth = 'Basic ' + Buffer.from(`${this.config.clientId}:${this.config.clientSecret}`).toString('base64');
+        const wordArray = enc.Utf8.parse(`${this.config.clientId}:${this.config.clientSecret}`);
+        let auth = 'Basic ' + enc.Base64.stringify(wordArray);
+        //let auth = 'Basic ' + Buffer.from(`${this.config.clientId}:${this.config.clientSecret}`).toString('base64');
 
         let headers = {
             'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',

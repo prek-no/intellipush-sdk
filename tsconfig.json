@@ -14,7 +14,8 @@
     "strict": true,
     "types": [
       "@types/node",
-      "@types/jasmine"
+      "@types/jasmine",
+      "@types/crypto-js"
     ]
   },
   "include": ["src/**/*"],
