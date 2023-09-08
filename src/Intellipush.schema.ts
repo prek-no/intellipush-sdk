@@ -11,7 +11,7 @@ export const ContactCreateSchema = Joi.object().keys({
     name: Joi.string().required(),
     countrycode: Joi.string().required(),
     phonenumber: Joi.string().required(),
-    email: Joi.string().email(),
+    email: Joi.string().email({ tlds: { allow: false } }),
     company: Joi.string(),
     country: Joi.string(),
     sex: Joi.string(),
@@ -42,7 +42,7 @@ export const UrlGenerateChildSchema = Joi.object({
     id: Joi.string().required(),
     target: Joi.object().keys({
         contact_id: Joi.number().required(),
-        email: Joi.string().email().required(),
+        email: Joi.string().email({ tlds: { allow: false } }).required(),
         countrycode: Joi.string().required(),
         phonenumber: Joi.string().required(),
     }),
