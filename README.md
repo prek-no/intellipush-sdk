@@ -2,7 +2,7 @@
 
 # Unofficial Nodejs SDK for [Intellipush](https://www.intellipush.com)
 
-This SDK is actively developed and maintained by [HIRVI](https://hirvi.no) - an official [Intellipush partner](https://www.intellipush.com/partnere/).
+This SDK is actively developed and maintained by [Prek AS](https://prek.no) - an official [Intellipush partner](https://www.intellipush.com/partnere/).
 
 > For compatibility with Node.js versions < 12, please install the [globalThis polyfill](https://github.com/es-shims/globalThis).
 
