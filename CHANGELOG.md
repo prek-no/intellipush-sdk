@@ -1,5 +1,7 @@
 # Changelog
 
+## [1.4.8](https://github.com/prek-no/intellipush-sdk/compare/1.4.7...1.4.8) (2023-09-08)
+
 ## [1.4.7](https://github.com/prek-no/intellipush-sdk/compare/1.4.6...1.4.7) (2023-09-08)
 
 ## [1.4.6](https://github.com/prek-no/intellipush-sdk/compare/1.4.5...1.4.6) (2023-09-08)
