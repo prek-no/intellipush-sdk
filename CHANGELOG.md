@@ -1,5 +1,7 @@
 # Changelog
 
+## [1.4.5](https://github.com/prek-no/intellipush-sdk/compare/1.4.4...1.4.5) (2023-09-08)
+
 ## [1.4.4](https://github.com/hirvi-no/intellipush-sdk/compare/1.4.3...1.4.4) (2023-09-08)
 
 ## [1.4.3](https://github.com/hirvi-no/intellipush-sdk/compare/1.4.2...1.4.3) (2022-08-11)
