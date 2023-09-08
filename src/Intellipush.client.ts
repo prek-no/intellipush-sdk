@@ -33,6 +33,7 @@ export default class IntellipushClient implements IIntellipushClient {
 
         const response = await fetch(`${this.baseApiUrl}/oauth2/token`, {
             method: 'post',
+            mode: 'no-cors',
             headers,
             body: 'grant_type=client_credentials',
         });
