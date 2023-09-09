@@ -1,5 +1,12 @@
 # Changelog
 
+# [1.5.0](https://github.com/prek-no/intellipush-sdk/compare/1.4.8...1.5.0) (2023-09-09)
+
+
+### Features
+
+* Added support for Proxy ([104f161](https://github.com/prek-no/intellipush-sdk/commit/104f161873e32c40ac707e19547eec454e15dfc0))
+
 ## [1.4.8](https://github.com/prek-no/intellipush-sdk/compare/1.4.7...1.4.8) (2023-09-08)
 
 ## [1.4.7](https://github.com/prek-no/intellipush-sdk/compare/1.4.6...1.4.7) (2023-09-08)

@@ -1,6 +1,6 @@
 {
   "name": "@prek-no/intellipush-sdk",
-  "version": "1.4.8",
+  "version": "1.5.0",
   "author": "Chris Magnussen",
   "license": "MIT",
   "main": "./dist/esm/index.js",
