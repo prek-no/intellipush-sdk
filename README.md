@@ -45,6 +45,7 @@ import { Intellipush } from '@prek-no/intellipush-sdk'
 const intellipush = new Intellipush({
     clientId: '<client_id>', // e.g process.env.INTELLIPUSH_CLIENT_ID
     clientSecret: '<client_secret>', // e.g process.env.INTELLIPUSH_CLIENT_SECRET
+    proxyUrl: '<proxy_url>' // Optional Proxy URL
 })
 ```
 
