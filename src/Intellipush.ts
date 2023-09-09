@@ -27,6 +27,7 @@ export interface IIntellipush {
     get url(): IUrlModule
     get user(): IUserModule
     authenticate(): Promise<Response>
+    setProxyUrl(url: string): void
     setToken (token: string): void
     getToken (): string
 }
@@ -71,6 +72,10 @@ export default class Intellipush implements IIntellipush {
 
     get user(): IUserModule {
         return new User(this.client);
+    }
+
+    setProxyUrl(url: string): void {
+        this.client.setProxyUrl(url);
     }
 
     getToken(): string {

@@ -8,6 +8,7 @@ export interface RequestOptions {
 export interface ClientConfig {
     clientId: string
     clientSecret: string
+    proxyUrl?: string
 }
 
 export interface APIResponseFormat {

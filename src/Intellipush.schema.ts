@@ -4,6 +4,7 @@ import * as Joi from 'joi';
 export const IntellipushConfigSchema = Joi.object({
     clientId: Joi.string().required(),
     clientSecret: Joi.string().required(),
+    proxyUrl: Joi.string().uri({ scheme: ['http', 'https'] }),
 });
 
 /** Contacts **/

@@ -5,12 +5,13 @@ import { ClientConfig, RequestOptions } from './Intellipush.types';
 export interface IIntellipushClient {
     request(endpoint: string, options: Record<string, any>): Promise<unknown>
     authenticate(): Promise<Response>
+    setProxyUrl(url: string): void
     setToken (token: string): void
     getToken (): string
 }
 
 export default class IntellipushClient implements IIntellipushClient {
-    readonly baseApiUrl = 'https://api.intellipush.com';
+    public baseApiUrl = 'https://api.intellipush.com';
     private config: ClientConfig;
     private accessToken: string = '';
 
@@ -24,6 +25,7 @@ export default class IntellipushClient implements IIntellipushClient {
     async authenticate(): Promise<Response> {
         const wordArray = enc.Utf8.parse(`${this.config.clientId}:${this.config.clientSecret}`);
         let auth = 'Basic ' + enc.Base64.stringify(wordArray);
+        console.log(auth);
         //let auth = 'Basic ' + Buffer.from(`${this.config.clientId}:${this.config.clientSecret}`).toString('base64');
 
         let headers = {
@@ -31,9 +33,9 @@ export default class IntellipushClient implements IIntellipushClient {
             'Authorization': auth,
         };
 
-        const response = await fetch(`${this.baseApiUrl}/oauth2/token`, {
+        const response = await fetch(`${this.getBaseUrl()}/oauth2/token`, {
             method: 'post',
-            mode: 'no-cors',
+            credentials: 'include',
             headers,
             body: 'grant_type=client_credentials',
         });
@@ -42,6 +44,25 @@ export default class IntellipushClient implements IIntellipushClient {
         this.setToken(result.access_token);
 
         return result;
+    }
+
+    /**
+     * Override proxy URL
+     *
+     * @param url
+     * @return void
+     */
+    setProxyUrl(url: string) {
+        this.config.proxyUrl = url;
+    }
+
+    /**
+     * Return url to use for our requests
+     *
+     * @return string
+     */
+    getBaseUrl(): string {
+        return this.config.proxyUrl || this.baseApiUrl;
     }
 
     /**
@@ -65,7 +86,7 @@ export default class IntellipushClient implements IIntellipushClient {
         let queryString = this.serializeQuery(params);
         queryString = queryString ? `?${queryString}` : '';
 
-        const response = await fetch(`${this.baseApiUrl}/restv2/${endpoint}${queryString}`, {
+        const response = await fetch(`${this.getBaseUrl()}/restv2/${endpoint}${queryString}`, {
             method,
             headers: {
                 ...headers,
